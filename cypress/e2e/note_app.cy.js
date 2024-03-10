@@ -1,5 +1,16 @@
 describe('Note app', function() {
   beforeEach(function() {
+    // Send POST request to api/testing/reset to empty DB
+    cy.request('POST', 'http://localhost:3001/api/testing/reset')
+
+    const newUser = {
+      name: 'Jend Schmidt',
+      username: 'testuser',
+      password: 'hellluva'
+    }
+
+    cy.request('POST', 'http://localhost:3001/api/users', newUser)
+
     cy.visit('http://localhost:5173')
   })
   it('front page can be opened', function() {
