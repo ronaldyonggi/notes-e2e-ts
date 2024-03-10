@@ -19,4 +19,20 @@ describe('Note app', function() {
     cy.get('#login-button').click()
     cy.contains('Jend Schmidt logged in')
   })
+
+  describe('when logged in', function () {
+    beforeEach(function () {
+      cy.contains('Open Login').click()
+      cy.get('#username').type('testuser')
+      cy.get('#password').type('hellluva')
+      cy.get('#login-button').click()
+    })
+
+    it('a new note can be created', function () {
+      cy.contains('Add a Note').click()
+      cy.get('#input-note').type('a note created by cypress')
+      cy.contains('save note').click()
+      cy.contains('a note created by cypress')
+    })
+  })
 })
