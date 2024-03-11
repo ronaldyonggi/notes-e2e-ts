@@ -1,7 +1,8 @@
 describe('Note app', function() {
   beforeEach(function() {
     // Send POST request to api/testing/reset to empty DB
-    cy.request('POST', 'http://localhost:3001/api/testing/reset')
+    // cy.request('POST', 'http://localhost:3001/api/testing/reset')
+    cy.request('POST', `${Cypress.env('BACKEND')}/testing/reset`)
 
     const newUser = {
       name: 'Jend Schmidt',
@@ -9,7 +10,8 @@ describe('Note app', function() {
       password: 'hellluva'
     }
 
-    cy.request('POST', 'http://localhost:3001/api/users', newUser)
+    // cy.request('POST', 'http://localhost:3001/api/users', newUser)
+    cy.request('POST', `${Cypress.env('BACKEND')}/users`, newUser)
 
     cy.visit('http://localhost:5173')
   })
