@@ -13,7 +13,7 @@ describe('Note app', function() {
     // cy.request('POST', 'http://localhost:3001/api/users', newUser)
     cy.request('POST', `${Cypress.env('BACKEND')}/users`, newUser)
 
-    cy.visit('http://localhost:5173')
+    cy.visit('')
   })
   it('front page can be opened', function() {
     cy.contains('Notes')
