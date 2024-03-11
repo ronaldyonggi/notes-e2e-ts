@@ -47,10 +47,10 @@ describe('Note app', function() {
 
   describe('when logged in', function () {
     beforeEach(function () {
-      cy.contains('Open Login').click()
-      cy.get('#username').type('testuser')
-      cy.get('#password').type('hellluva')
-      cy.get('#login-button').click()
+      cy.login({
+        username: 'testuser',
+        password: 'hellluva'
+      })
     })
 
     it('a new note can be created', function () {
