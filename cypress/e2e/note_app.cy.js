@@ -65,5 +65,11 @@ describe('Note app', function() {
       cy.contains('save note').click()
       cy.contains('a note created by cypress')
     })
+
+    it.only('note importance can be changed', function () {
+      cy.contains('second note').parent().find('#toggle-importance').as('theButton')
+      cy.get('@theButton').click()
+      cy.get('@theButton').should('contain', 'make not important')
+    })
   })
 })
