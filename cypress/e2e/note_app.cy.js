@@ -33,7 +33,7 @@ describe('Note app', function() {
     cy.contains('Jend Schmidt logged in')
   })
 
-  it.only('login fails with wrong password', function() {
+  it('login fails with wrong password', function() {
     cy.contains('Open Login').click()
     cy.get('#username').type('testuser')
     cy.get('#password').type('algm930321')
@@ -53,6 +53,10 @@ describe('Note app', function() {
         username: 'testuser',
         password: 'hellluva'
       })
+
+      cy.createNote({ content: 'first note', important: false})
+      cy.createNote({ content: 'second note', important: false})
+      cy.createNote({ content: 'third note', important: false})
     })
 
     it('a new note can be created', function () {
